@@ -70,12 +70,9 @@ abstract class JsonController extends AbstractController
      */
     public function queryResult(QueryResult $queryResult): JsonResponse
     {
-        $context = new SerializationContext();
-        $context->setSerializeNull(true);
-
         $items = [];
         foreach ($queryResult->getItems() as $item) {
-            $items[] = $this->serializer->toArray($item, $context);
+            $items[] = $this->toArray($item);
         }
 
         return $this->result([
@@ -84,6 +81,23 @@ abstract class JsonController extends AbstractController
             'next' => $queryResult->getNext(),
             'count' => $queryResult->getCount()
         ]);
+    }
+
+    /**
+     * @param $object
+     *
+     * @return array
+     */
+    public function toArray($object): ?array
+    {
+        if ($object === null) {
+            return null;
+        }
+
+        $context = new SerializationContext();
+        $context->setSerializeNull(true);
+
+        return $this->serializer->toArray($object, $context);
     }
 
     /**
