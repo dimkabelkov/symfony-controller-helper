@@ -1,0 +1,21 @@
+{
+    "name": "dimkabelkov/symfony-controller-helper",
+    "license": "proprietary",
+    "description": "dimkabelkov/symfony-controller-helper",
+    "type": "package",
+    "require": {
+        "php": "^7.4",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dimkabelkov\\ControllerHelper\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dmitry Kiryukhin",
+            "email": "dimkabelkov@gmail.com"
+        }
+    ]
+}
